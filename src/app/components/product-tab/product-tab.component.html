@@ -1,0 +1,16 @@
+<!-- <div class="search-tab float-left" *ngFor="let tab of searchDataArr; let i=index; let lastTab=last;">
+  <span class="tab-text" (click)="goToTab(i)">Search {{ i+1 }}</span>
+  <button
+    class="btn tab-button font-weight-bold"
+    [ngClass]="{ 'btn-success' : lastTab, 'btn-danger' : !lastTab }"
+    type="button"
+    (click)="lastTab ? addNewTab(i) : removeCurrentTab(i)">
+    {{ lastTab ? '&#43;' : '&#8211;' }}
+  </button>
+</div> -->
+
+<div class="search-tab float-left" *ngFor="let tab of searchDataArr; let i=index; let lastTab=last;">
+  <span (click)="goToTab(i)">search {{i + 1}}</span>
+  <button (click)="removeCurrentTab(i)" class="btn-danger">&#8211;</button>
+</div>
+<button (click)="addNewTab()" class="btn-success">&#43;</button>
