@@ -31,16 +31,17 @@ export class SearchDataService {
   //   this.currentSearchModel.next(searchModel);
   // }
 
-  // getCurrentSearchModel(): Observable<SearchFilter> {  // --> same
-  //   return this.currentSearchModel.asObservable();
-  // }
+  getCurrentSearchModel(): Observable<SearchFilter> {  // --> same
+    return this.currentSearchModel.asObservable();
+  }
 
-  getSearchData() {
+  getSearchData(): SearchFilter {
     return this.searchModel;
   }
 
-  setSearchData(searchModel): void {
-    this.searchModel = searchModel;
+  setSearchData(searchModel: SearchFilter): void {
+    this.searchModel = Object.assign({}, searchModel);
+    this.currentSearchModel.next(this.searchModel);
     console.log('searchModel', this.searchModel);
   }
 }

@@ -5,6 +5,15 @@
   border-radius: 5px;
   padding: 5px;
   margin: 5px 10px 5px 0;
+  display: inline-block;
+
+  &.active {
+    background: #ffcf76;
+  }
+
+  .switch-tab {
+    cursor: pointer;
+  }
 
   .tab-text {
     color: white;

@@ -29,11 +29,11 @@ export class SearchFilterComponent implements OnInit, OnChanges {
       category: ''
     };
 
-    // this._searchDataService.getCurrentSearchModel().subscribe((model: SearchFilter) => {
-    //   this.searchFilter = model;
-    //   this.searchProduct(true);
-    //   console.log('received updated search model obj: ', model);
-    // });
+    this._searchDataService.getCurrentSearchModel().subscribe((model: SearchFilter) => {
+      this.searchFilter = model;
+      this.searchProduct(true);
+      console.log('*** received updated search model obj *** ', model);
+    });
   }
   ngOnChanges() {
     this.filteredList = this.productList;
@@ -84,10 +84,10 @@ export class SearchFilterComponent implements OnInit, OnChanges {
     // console.log('\n\nfiltered: ', this.filteredList);
     this.filterList.emit(this.filteredList);
 
-    // if (!searchModelUpdated) {
-    //   this._searchDataService.setSearchData(this.searchFilter);
-    // }
-    this._searchDataService.setSearchData(this.searchFilter);
+    if (!searchModelUpdated) {
+      this._searchDataService.setSearchData(this.searchFilter);
+    }
+    // this._searchDataService.setSearchData(this.searchFilter);
   }
 
   removeFilter(): void {
@@ -99,9 +99,10 @@ export class SearchFilterComponent implements OnInit, OnChanges {
     this.filteredList = this.productList;
     this.filterList.emit(this.filteredList);
   }
-  retrieve() {
-    this.searchFilter = this._searchDataService.getSearchData();
-    this.searchProduct();
-  }
+
+  // retrieve(): void {
+  //   this.searchFilter = this._searchDataService.getSearchData();
+  //   this.searchProduct();
+  // }
 }
 
